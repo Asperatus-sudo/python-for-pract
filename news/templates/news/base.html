@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Новостной портал{% endblock %}</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'news/style.css' %}">
+</head>
+
+<body class="bg-light">
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                Новостной портал
+            </a>
+
+            <div class="navbar-nav">
+                <a class="nav-link" href="{% url 'home' %}">
+                    Главная
+                </a>
+
+                <a class="nav-link" href="{% url 'category' %}">
+                    Категории
+                </a>
+                <a class="nav-link" href="{% url 'about' %}">
+                    О нас
+                </a>
+                <a class="nav-link" href="{% url 'contact' %}">
+                    Контакт
+                </a>
+            </div>
+            <a class="nav-link" href="{% url 'category_detail' category_name='Спорт' %}">
+                Спорт
+            </a>
+            <a class="nav-link" href="{% url 'category_detail' category_name='Общество' %}">
+                Общество
+            </a>
+            <a class="nav-link" href="{% url 'category_detail' category_name='Образование' %}">
+                Образование
+            </a>
+        </div>
+    </nav>
+</header>
+
+<main class="container py-4">
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer class="bg-dark text-white py-3 mt-4">
+    <div class="container">
+        <p class="mb-0">Учебный проект на Django</p>
+    </div>
+</footer>
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"
+></script>
+
+</body>
+</html>

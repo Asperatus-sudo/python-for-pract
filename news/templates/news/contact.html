@@ -1,0 +1,23 @@
+{% extends "news/base.html" %}
+
+{% block title %}
+Главная — Новостной портал
+{% endblock %}
+
+{% block header %}
+<h1>Контакты</h1>
+{% endblock %}
+
+{% block content %}
+    <h2>{{ title }}</h2>
+
+    <section>
+        <ul>
+            {% for article in articles %}
+                <li>Наш номер телефона: {{ article }}</li>
+            {% empty %}
+                <li>Наш email: {{ article }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

@@ -1,0 +1,102 @@
+/* Общие настройки страницы */
+body {
+    margin: 0;
+    background-color: #f3f5f7;
+    color: #263238;
+    font-family: Arial, sans-serif;
+}
+
+/* Верхняя часть сайта */
+header {
+    background-color: #17324d;
+    color: white;
+    padding: 24px 0px;
+
+}
+
+h1 {
+    color: pink;
+}
+
+h2 {
+    color: pink;
+}
+
+/* Основной контейнер */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Заголовок сайта */
+title {
+    margin: 0;
+    font-size: 30px;
+}
+
+/* Навигация */
+nav {
+    margin-top: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: pink;
+    text-decoration: underline;
+}
+
+/* Основная часть страницы */
+main {
+    padding-top: 25px;
+    padding-bottom: 40px;
+}
+
+/* Карточка новости */
+.card {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    border: 1px solid #dfe4e8;
+}
+
+/* Заголовок новости */
+.card h2 {
+    margin-top: 0;
+    color: #17324d;
+}
+
+/* Подвал сайта */
+footer {
+    background-color: #e1e7ec;
+    padding: 20px 0;
+    color: #455a64;
+}
+
+.hover-lift {
+transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.hover-lift:hover {
+transform: translateY(-4px);
+box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.08)!important;
+}
+
+.link-primary-hover:hover {
+color: var(--bs-primary)!important;
+}
+
+.small-95 {
+font-size: 0.95rem;
+}
+
+.small-90 {
+font-size: 0.90rem;
+}

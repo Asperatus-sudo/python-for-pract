@@ -1,0 +1,36 @@
+{% extends "news/base.html" %}
+
+{% block title %}
+Новость отправлена
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="alert alert-success">
+
+        <h1 class="h3">
+            Новость успешно отправлена!
+        </h1>
+
+        <p>
+            Ваша новость сохранена как черновик.
+        </p>
+
+        <p>
+            После проверки редактор сможет опубликовать её.
+        </p>
+
+    </div>
+
+    <a
+        href="{% url 'home' %}"
+        class="btn btn-primary"
+    >
+        Вернуться на главную
+    </a>
+
+</div>
+
+{% endblock %}

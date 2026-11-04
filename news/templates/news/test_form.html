@@ -1,0 +1,68 @@
+{% extends "news/base.html" %}
+
+{% block title %}
+Тестовая форма
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h1>Тестовая форма</h1>
+
+    <form method="post">
+
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label">
+                Заголовок
+            </label>
+
+            <input
+                type="text"
+                name="title"
+                class="form-control"
+            >
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">
+                Текст новости
+            </label>
+
+            <textarea
+                name="content"
+                class="form-control"
+                rows="5"
+            ></textarea>
+        </div>
+
+        <button
+            type="submit"
+            class="btn btn-primary"
+        >
+            Отправить
+        </button>
+
+    </form>
+
+</div>
+
+{% if title %}
+    <div class="alert alert-success mt-3">
+
+        <h3>Полученные данные</h3>
+
+        <p>
+            Заголовок: {{ title }}
+        </p>
+
+        <p>
+            Текст: {{ content }}
+        </p>
+
+    </div>
+{% endif %}
+
+{% endblock %}
