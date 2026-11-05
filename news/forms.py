@@ -4,7 +4,6 @@ from .models import Article
 
 
 class ArticleForm(forms.ModelForm):
-
     class Meta:
         model = Article
 
@@ -12,6 +11,7 @@ class ArticleForm(forms.ModelForm):
             "title",
             "content",
             "category",
+            "image",
         ]
 
         labels = {

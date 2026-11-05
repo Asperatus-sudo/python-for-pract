@@ -11,6 +11,7 @@ class ArticleAdmin(admin.ModelAdmin):
         "created_at",
         "is_published",
         "author",
+        "image",
     )
 
     list_filter = (

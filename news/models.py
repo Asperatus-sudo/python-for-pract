@@ -33,6 +33,13 @@ class Article(models.Model):
         verbose_name="Категория",
     )
 
+    image = models.ImageField(
+        upload_to="articles/",
+        blank=True,
+        null=True,
+        verbose_name="Изображение"
+    )
+
     def __str__(self):
         return self.title
 

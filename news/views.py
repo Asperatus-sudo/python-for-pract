@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Article
 from .forms import ArticleForm
 
+
 # Create your views here.
 
 # def index(request):
@@ -23,6 +24,7 @@ def index(request):
         "news/index.html",
         context,
     )
+
 
 def about(request):
     return HttpResponse("О нашем новостном издании")
@@ -96,7 +98,6 @@ def category(request, category_name=None):
     )
 
 
-
 def about(request):
     context = {
         "title": "Информация о нас",
@@ -135,6 +136,7 @@ def article_detail(request, article_id):
         "news/article_detail.html",
         context,
     )
+
 
 def edit_article(request, article_id):
     article = get_object_or_404(
@@ -193,14 +195,13 @@ def test_form(request):
         context,
     )
 
-def add_article(request):
 
+def add_article(request):
     if request.method == "POST":
 
         form = ArticleForm(request.POST)
 
         if form.is_valid():
-
             article = form.save()
 
             return redirect("article_created")
@@ -217,4 +218,11 @@ def add_article(request):
         request,
         "news/add_article.html",
         context,
+    )
+
+
+def article_created(request):
+    return render(
+        request,
+        "news/article_created.html",
     )
