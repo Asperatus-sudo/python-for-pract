@@ -38,9 +38,14 @@
 
                 </div>
             </div>
-            <a href="{% url 'article_edit' article_id=article.id %}">
-                Редактировать новость
-            </a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'article_edit' article_id=article.id %}">
+                    Редактировать новость
+                </a>
+                <a href="{% url 'article_delete' article_id=article.id %}">
+                    Удалить новость
+                </a>
+            {% endif %}
         </div>
     </div>
 </article>

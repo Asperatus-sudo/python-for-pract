@@ -139,7 +139,7 @@ def article_detail(request, article_id):
         context,
     )
 
-
+@login_required
 def edit_article(request, article_id):
     article = get_object_or_404(
         Article,
@@ -244,7 +244,7 @@ def add_article(request):
         context,
     )
 
-
+@login_required
 def article_created(request):
     return render(
         request,

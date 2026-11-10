@@ -1,0 +1,27 @@
+{% extends "news/base.html" %}
+
+{% block content %}
+
+<h1>Вход в систему</h1>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    {% if next %}
+        <input
+            type="hidden"
+            name="next"
+            value="{{ next }}"
+        >
+    {% endif %}
+
+    <button type="submit">
+        Войти
+    </button>
+
+</form>
+
+{% endblock %}
