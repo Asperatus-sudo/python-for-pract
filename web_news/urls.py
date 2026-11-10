@@ -57,6 +57,12 @@ urlpatterns = [
         views.article_created,
         name="article_created",
     ),
+    path(
+        "article/<int:article_id>/delete/",
+        views.delete_article,
+        name="article_delete",
+    )
+
 ]
 if settings.DEBUG:
     urlpatterns += static(
