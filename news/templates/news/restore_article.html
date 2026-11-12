@@ -1,0 +1,23 @@
+{% extends "news/base.html" %}
+
+{% block content %}
+
+<h1>Восстановление новости</h1>
+
+<p>
+    Вы действительно хотите восстановить эту новость?
+</p>
+
+<h3>{{ article.title }}</h3>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <button type="submit">
+        Восстановить
+    </button>
+
+</form>
+
+{% endblock %}

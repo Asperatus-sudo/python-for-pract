@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Article
 from .forms import ArticleForm
 from django.views.decorators.http import require_POST
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 
 # Create your views here.
@@ -14,7 +14,8 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
     articles = Article.objects.filter(
-        is_published=True
+        is_published=True,
+        is_active=True,
     ).order_by("-created_at")
 
     context = {
@@ -78,13 +79,15 @@ def about(request):
 def category(request, category_name=None):
     if category_name is None:
         articles = Article.objects.filter(
-            is_published=True
+            is_published=True,
+            is_active=True
         ).order_by("-created_at")
 
         category_name = "Все категории"
     else:
         articles = Article.objects.filter(
             is_published=True,
+            is_active=True,
             category__iexact=category_name,
         ).order_by("-created_at")
 
@@ -127,6 +130,7 @@ def article_detail(request, article_id):
         Article,
         id=article_id,
         is_published=True,
+        is_active=True,
     )
 
     context = {
@@ -139,7 +143,9 @@ def article_detail(request, article_id):
         context,
     )
 
+
 @login_required
+@permission_required("news.change_article", raise_exception=True)
 def edit_article(request, article_id):
     article = get_object_or_404(
         Article,
@@ -180,6 +186,7 @@ def edit_article(request, article_id):
 
 
 @login_required
+@permission_required("news.delete_article", raise_exception=True)
 def delete_article(request, article_id):
     article = get_object_or_404(
         Article,
@@ -244,9 +251,59 @@ def add_article(request):
         context,
     )
 
+
 @login_required
+@permission_required("news.add_article", raise_exception=True)
 def article_created(request):
     return render(
         request,
         "news/article_created.html",
+    )
+
+
+@login_required()
+@permission_required("news.change_article", raise_exception=True)
+def archive_article(request, article_id):
+    article = get_object_or_404(
+        Article,
+        id=article_id,
+        is_active=True
+    )
+
+    if request.method == "POST":
+        article.is_active = False
+        article.save(
+            update_fields=["is_active"]
+        )
+
+        return redirect("home")
+
+    return render(
+        request,
+        "news/archive_article.html",
+        {"article": article}
+    )
+
+
+@login_required()
+@permission_required("news.change_article", raise_exception=True)
+def restore_article(request, article_id):
+    article = get_object_or_404(
+        Article,
+        id=article_id,
+        is_active=False
+    )
+
+    if request.method == "POST":
+        article.is_active = True
+        article.save(
+            update_fields=["is_active"]
+        )
+
+        return redirect("home")
+
+    return render(
+        request,
+        "news/restore_article.html",
+        {"article": article}
     )

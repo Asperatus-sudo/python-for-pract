@@ -45,6 +45,9 @@
                 <a href="{% url 'article_delete' article_id=article.id %}">
                     Удалить новость
                 </a>
+                <a href="{% url 'article_archive' article_id=article.id %}">
+                    Скрыть новость
+                </a>
             {% endif %}
         </div>
     </div>

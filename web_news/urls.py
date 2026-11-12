@@ -63,6 +63,20 @@ urlpatterns = [
         views.delete_article,
         name="article_delete",
     ),
+
+    path(
+        "article/<int:article_id>/archive/",
+        views.archive_article,
+        name="article_archive",
+    ),
+
+    path(
+        "article/<int:article_id>/restore/",
+        views.restore_article,
+        name="article_restore",
+    ),
+
+
     path(
         "accounts/login/",
         auth_views.LoginView.as_view(
@@ -76,7 +90,6 @@ urlpatterns = [
         auth_views.LogoutView.as_view(),
         name="logout"
     ),
-
 
 ]
 if settings.DEBUG:

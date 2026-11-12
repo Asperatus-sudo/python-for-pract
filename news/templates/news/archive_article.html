@@ -1,0 +1,31 @@
+{% extends "news/base.html" %}
+
+{% block content %}
+
+<h1>Скрытие новости</h1>
+
+<p>
+    Вы действительно хотите скрыть эту новость?
+</p>
+
+<h3>{{ article.title }}</h3>
+
+<p>
+    Новость останется в базе данных, но перестанет отображаться на сайте
+</p>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <button type="submit">
+        Да, скрыть новость
+    </button>
+
+</form>
+
+<a href="{% url 'article_detail' article_id=article.id %}">
+    Отмена
+</a>
+
+{% endblock %}

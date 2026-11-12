@@ -40,6 +40,11 @@ class Article(models.Model):
         verbose_name="Изображение"
     )
 
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name="Активна",
+    )
+
     def __str__(self):
         return self.title
 
